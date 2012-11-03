@@ -1,4 +1,4 @@
-local underscore = require('webscriptio/lib/underscore.lua')
+local underscore = require('underscore')
 
 local verify = function (request, authToken)
 	local sts = request.scheme .. '://' .. request.headers.Host .. request.path

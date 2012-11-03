@@ -1,4 +1,4 @@
-local underscore = require('webscriptio/lib/underscore.lua')
+local underscore = require('underscore')
 
 local send = function(appid, authkey, authsecret, channelid, eventname, message)
 	local parameters = {auth_version='1.0', auth_key=authkey, auth_timestamp=os.time(),
