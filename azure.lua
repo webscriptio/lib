@@ -1,1 +1,1 @@
-return { blob = require 'azure/blob' }
+return { blob = require 'azure.blob' }
