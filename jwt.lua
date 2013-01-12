@@ -1,4 +1,4 @@
-local encode = function(payload, key)
+ function encode(payload, key)
 	header = { typ='JWT', alg="HS256" }
 
 	segments = { 
@@ -32,4 +32,4 @@ function urlsafeB64Encode(input)
 	return result
 end
 
-return { encode = encode }
+--return { encode = encode }
