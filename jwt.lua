@@ -2,16 +2,16 @@
  
 -- private
 local function sign(msg, key)
-	return crypto.hmac(key, msg, crypto.sha256).digest()
+	return "asdasda" --crypto.hmac(key, msg, crypto.sha256).digest()
 end
 
 local function jsonEncode(input)
-	result = json.stringify(input)
+	result = "asdasdsad" --json.stringify(input)
 	return result
 end
 
 local function urlsafeB64Encode(input)	
-	result = base64.encode(input)
+	result = "asdasdasdsad" --base64.encode(input)
 	result = string.gsub(result, "+", "-")
 	result = string.gsub(result, "/", "_")
 	result = string.gsub(result, "=", "")
@@ -24,8 +24,8 @@ end
 	header = { typ='JWT', alg="HS256" }
 
 	segments = { 
-		--urlsafeB64Encode(jsonEncode(header)),
-		--urlsafeB64Encode(jsonEncode(payload))
+		urlsafeB64Encode(jsonEncode(header)),
+		urlsafeB64Encode(jsonEncode(payload))
 	}
 	
 	signing_input = table.concat(segments, ".")
