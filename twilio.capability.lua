@@ -5,12 +5,12 @@ local _authToken = ""
 local _accountSid = ""
 local _clientName = ""
 
-function initialize(accountSid, authToken)
+local initialize = function(accountSid, authToken)
 	_authToken = authToken
 	_accountSid = accountSid
 end
 
-function allowClientIncoming(clientName)
+local allowClientIncoming = function(clientName)
   if (clientName:match("%W")) then
 		error("Only alphanumeric characters allowed in client name.")
 	end    
@@ -23,12 +23,12 @@ function allowClientIncoming(clientName)
   allow("client", "incoming", nil)
 end
 
-function allowClientOutgoing(appSid, appParams)
+local allowClientOutgoing = function(appSid, appParams)
 	params = { ["appSid"]=appSid, ["appParams"]=appParams }
 	allow("client", "outgoing",	params)
 end
 
-function generateToken(ttlSeconds)
+local generateToken = function(ttlSeconds)
 	scopeStrings = {}
 	
 	for scopeCount=1, #_scopes do
@@ -49,9 +49,9 @@ end
 
 function allow(service, privilage, params)
 	_scopes[#_scopes+1] = { 
-						["service"]=service, 
-						["privilage"]=privilage,	
-						["params"]=params 
+								["service"]=service, 
+								["privilage"]=privilage,	
+								["params"]=params 
 	}
 end
 
