@@ -7,6 +7,7 @@
 	segments = { 
 		--urlsafeB64Encode(jsonEncode(header)),
 		--urlsafeB64Encode(jsonEncode(payload))
+		
 	}
 	
 	signing_input = table.concat(segments, ".")
