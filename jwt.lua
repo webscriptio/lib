@@ -6,7 +6,7 @@ local function sign(msg, key)
 end
 
 local function jsonEncode(input)
-	result = "asdasdsad" --json.stringify(input)
+	result = json.stringify(input)
 	return result
 end
 
