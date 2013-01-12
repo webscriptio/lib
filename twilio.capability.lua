@@ -42,7 +42,7 @@ local generateToken = function(ttlSeconds)
             exp = os.time() + ttlSeconds
         }
 	
-  result = encode(payload, _authToken, "HS256");
+  result = jwt.encode(payload, _authToken, "HS256");
 	
 	return result
 end
