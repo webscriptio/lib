@@ -11,7 +11,7 @@ local function jsonEncode(input)
 end
 
 local function urlsafeB64Encode(input)	
-	result = "asdasdasdsad" --base64.encode(input)
+	result = base64.encode(input)
 	result = string.gsub(result, "+", "-")
 	result = string.gsub(result, "/", "_")
 	result = string.gsub(result, "=", "")
