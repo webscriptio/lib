@@ -49,9 +49,9 @@ end
 
 function allow(service, privilage, params)
 	_scopes[#_scopes+1] = { 
-													["service"]=service, 
-													["privilage"]=privilage,	
-													["params"]=params 
+						["service"]=service, 
+						["privilage"]=privilage,	
+						["params"]=params 
 	}
 end
 
