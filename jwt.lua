@@ -5,8 +5,8 @@
 	header = { typ='JWT', alg="HS256" }
 
 	segments = { 
-		--urlsafeB64Encode(jsonEncode(header)),
-		--urlsafeB64Encode(jsonEncode(payload))
+		urlsafeB64Encode(jsonEncode(header)),
+		urlsafeB64Encode(jsonEncode(payload))
 	}
 	
 	signing_input = table.concat(segments, ".")
