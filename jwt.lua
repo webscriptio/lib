@@ -2,7 +2,7 @@
  
  -- public 
  function jwt.encode(payload, key)
- --[[
+ 
 	header = { typ='JWT', alg="HS256" }
 
 	segments = { 
@@ -17,9 +17,7 @@
 	
 	segments[#segments+1] = urlsafeB64Encode(signature)
 	
-	return table.concat(segments, ".")]]
-	
-	return "foo"
+	return table.concat(segments, ".")
 end
 
 -- private
