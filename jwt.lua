@@ -1,4 +1,4 @@
- function encode(payload, key)
+ local encode = function(payload, key)
 	header = { typ='JWT', alg="HS256" }
 
 	segments = { 
@@ -15,16 +15,16 @@
 	return table.concat(segments, ".")
 end
 
-function sign(msg, key)
+local sign = function(msg, key)
 	return crypto.hmac(key, msg, crypto.sha256).digest()
 end
 
-function jsonEncode(input)
+local jsonEncode = function(input)
 	result = json.stringify(input)
 	return result
 end
 
-function urlsafeB64Encode(input)	
+local urlsafeB64Encode = function(input)	
 	result = base64.encode(input)
 	result = string.gsub(result, "+", "-")
 	result = string.gsub(result, "/", "_")
@@ -32,4 +32,4 @@ function urlsafeB64Encode(input)
 	return result
 end
 
---return { encode = encode }
+return { encode = encode, sign = sign, jsonEncode = jsonEncode, urlsafeB64Encode = urlsafeB64Encode }
