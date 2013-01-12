@@ -2,7 +2,8 @@
  
 -- private
 local function sign(msg, key)
-	return "asdasda" --crypto.hmac(key, msg, crypto.sha256).digest()
+  result = crypto.hmac(key, msg, crypto.sha256).digest()
+	return result
 end
 
 local function jsonEncode(input)
