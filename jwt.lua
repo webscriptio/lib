@@ -15,16 +15,16 @@ local encode = function(payload, key)
 	return table.concat(segments, ".")
 end
 
-local sign = function(msg, key)
+function sign(msg, key)
 	return crypto.hmac(key, msg, crypto.sha256).digest()
 end
 
-local jsonEncode = function(input)
+function jsonEncode(input)
 	result = json.stringify(input)
 	return result
 end
 
-local urlsafeB64Encode = function(input)	
+function urlsafeB64Encode(input)	
 	result = base64.encode(input)
 	result = string.gsub(result, "+", "-")
 	result = string.gsub(result, "/", "_")
