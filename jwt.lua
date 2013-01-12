@@ -7,7 +7,6 @@ local function sign(msg, key)
 end
 
 local function jsonEncode(input)
-  print('jsonEncode')
 	result = json.stringify(input)
 	return result
 end
