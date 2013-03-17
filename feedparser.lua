@@ -114,7 +114,6 @@ local function parse_entries(entries_el, format_str, base)
 			
 			elseif tag=='category' or tag=='dc:subject' then 
 				tinsert(entry.categories, el:getText())
-				--todo
 			
 			elseif tag=='source' then
 				--todo
