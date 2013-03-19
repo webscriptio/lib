@@ -27,7 +27,7 @@ end
 local function parse_entries(entries_el, format_str, base)
 	local entries = {}
 	for i, entry_el in ipairs(entries_el) do
-		local entry = {enclosures={}, links={}, contributors={}}
+		local entry = {enclosures={}, links={}, contributors={}, categories={}}
 		local entry_base = rebase(entry_el, base)
 		for i, el in ipairs(entry_el:getChildren('*')) do
 			local tag = el:getTag()
@@ -113,7 +113,7 @@ local function parse_entries(entries_el, format_str, base)
 				if author_url and author_url ~= "" then entry.author_detail.href=resolve(author_url, rebase(el:getChild('url'), el_base)) end		
 			
 			elseif tag=='category' or tag=='dc:subject' then 
-				--todo
+				tinsert(entry.categories, el:getText())
 			
 			elseif tag=='source' then
 				--todo
