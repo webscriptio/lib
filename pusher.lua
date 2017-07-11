@@ -19,7 +19,7 @@ local send = function(appid, authkey, authsecret, channelid, eventname, message,
 	if cluster ~= nil then
 		subdomain = subdomain .. "-" .. cluster
 	end
-	return http.request { method='post', url=string.format('http://%s.pusherapp.com%s?%s', subdomain,
+	return http.request { method='post', url=string.format('https://%s.pusher.com%s?%s', subdomain,
 		url, http.qsencode(parameters)), data=message }
 end
 
