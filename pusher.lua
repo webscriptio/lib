@@ -1,6 +1,6 @@
 local underscore = require('underscore')
 
-local send = function(appid, authkey, authsecret, channelid, eventname, message)
+local send = function(appid, authkey, authsecret, channelid, eventname, message, cluster)
 	local parameters = {auth_version='1.0', auth_key=authkey, auth_timestamp=os.time(),
 			body_md5=crypto.md5(message).hexdigest(), name=eventname}
 	local url = string.format('/apps/%s/channels/%s/events', appid, channelid)
@@ -15,8 +15,12 @@ local send = function(appid, authkey, authsecret, channelid, eventname, message)
 				'&'
 			)),
 		crypto.sha256).hexdigest()
-	return http.request { method='post', url=string.format('http://api.pusherapp.com%s?%s', url,
-		http.qsencode(parameters)), data=message }
+	local subdomain = 'api'
+	if cluster ~= nil then
+		subdomain = subdomain .. "-" .. cluster
+	end
+	return http.request { method='post', url=string.format('http://%s.pusherapp.com%s?%s', subdomain,
+		url, http.qsencode(parameters)), data=message }
 end
 
 return {send=send}
