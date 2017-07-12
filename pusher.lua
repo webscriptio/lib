@@ -15,11 +15,11 @@ local send = function(appid, authkey, authsecret, channelid, eventname, message,
 				'&'
 			)),
 		crypto.sha256).hexdigest()
-	local subdomain = 'api'
+	local domain = 'api.pusherapp.com'
 	if cluster ~= nil then
-		subdomain = subdomain .. "-" .. cluster
+		domain = string.format('api-%s.pusher.com', cluster)
 	end
-	return http.request { method='post', url=string.format('https://%s.pusher.com%s?%s', subdomain,
+	return http.request { method='post', url=string.format('https://%s%s?%s', domain,
 		url, http.qsencode(parameters)), data=message }
 end
 
